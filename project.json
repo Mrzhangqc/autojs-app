@@ -1,0 +1,12 @@
+{
+    "name": "投资提醒",
+    "main": "main.js",
+    "ignore": [
+        "build", 
+        ".vscode",
+        "node_modules"
+    ],
+    "packageName": "com.zqc.alert",
+    "versionName": "1.0.1",
+    "versionCode": 1
+}
