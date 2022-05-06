@@ -71,6 +71,7 @@ var AlertMain = function () {
 
         records = dirs.map((dir, index) => dir + '-' + priceList[index]);
         if (records.length) {
+          console.info('----获取到 %d 条记录, 监控开始...', records.length);
           device.vibrate(500);
           // 持仓记录处理完成
           maid.back();
@@ -80,7 +81,6 @@ var AlertMain = function () {
           var localData = storages.create("local");
           localData.put('consoleStatus', 'true');
           app.launch("com.zqc.alert");
-          maid.sleep(1);
         } else {
           toast('持仓记录获取失败，请关闭应用重试！');
         }

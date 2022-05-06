@@ -124,7 +124,7 @@ function AutoMain() {
     function doBuy (price, buy) {
       // 准备买入
       var buyUc = text("买入").depth(15).findOne(1000);
-      log('准备买--');
+      log('--准备买--');
       buyUc.click();
       maid.sleep(1);
       var plusBtn = className("android.view.View").depth(16).text("+").clickable(true).findOne(1000);
@@ -138,7 +138,7 @@ function AutoMain() {
         maid.sleep(0.5);
       }
       doBuyBtn.click();
-      console.verbose('买入:', buy/base, ' ', '价格:', price, ' ', new Date().Format("yyyy-MM-dd HH:mm:ss"), '\n');
+      console.verbose('买入:', (buy || 1)/base, ' ', '价格:', price, ' ', new Date().Format("yyyy-MM-dd HH:mm:ss"), '\n');
       maid.sleep(1);
       var closeBtn = className("android.widget.Image").text("close").findOne(500);
       if (closeBtn) {
@@ -151,7 +151,7 @@ function AutoMain() {
     function doSale(price, sale) {
       // 准备卖出
       var saleUc = text("卖出").depth(15).findOne(1000);
-      log('准备卖--');
+      log('--准备卖--');
       saleUc.click();
       maid.sleep(1);
       var plusSaleBtn = className("android.view.View").depth(16).text("+").clickable(true).findOne(1000);
@@ -165,7 +165,7 @@ function AutoMain() {
         maid.sleep(0.5);
       }
       doSaleBtn.click();
-      console.info('卖出:', sale/base, ' ', '价格:', price, ' ', new Date().Format("yyyy-MM-dd HH:mm:ss"), '\n');
+      console.info('卖出:', (sale || 1)/base, ' ', '价格:', price, ' ', new Date().Format("yyyy-MM-dd HH:mm:ss"), '\n');
 
       maid.sleep(1);
       var closeBtn = className("android.widget.Image").text("close").findOne(500);
