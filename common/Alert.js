@@ -80,7 +80,6 @@ var AlertMain = function () {
 
           var localData = storages.create("local");
           localData.put('consoleStatus', 'true');
-          app.launch("com.zqc.alert");
         } else {
           toast('持仓记录获取失败，请关闭应用重试！');
         }
