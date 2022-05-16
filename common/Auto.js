@@ -49,6 +49,7 @@ function AutoMain() {
       var max$ = 0;
       var min$ = 0;
       var doCount = 0;
+      var keyongjin = 0;
     
       if (new Date().getMinutes() == 59 && new Date().getSeconds() < 25) {
         console.clear();
@@ -64,8 +65,10 @@ function AutoMain() {
       // maid.sleep(1);
       
       if (textStartsWith('$').exists()) {
-        zichan = textStartsWith('$').find().map(t => t.text()).slice(-3).slice(0,2).reduce((total, next) => {
-          return total + Number(next.slice(1));
+        var list$ = textStartsWith('$').find().map(t => t.text().slice(1));
+        keyongjin = list$.slice(-2)[0];
+        zichan = list$.slice(-3).slice(0,2).reduce((total, next) => {
+          return total + Number(next);
         }, 0);
       }
       maid.sleep(1);
@@ -100,8 +103,10 @@ function AutoMain() {
         if (_min) {min$ = parseFloat(_min.match(/\d+\.\d+/g))};
 
         if (zichan && curr$) {
-          var total = (~~(zichan / GetBase(curr$))) / base;
+          var yajin = GetBase(curr$);
+          var total = (~~(zichan / yajin)) / base;
           doCount = Math.round((total - chicang) * 10);
+          if (keyongjin/yajin < 1) return;
 
           if (doCount) {
             device.vibrate(300);
