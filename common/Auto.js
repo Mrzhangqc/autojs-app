@@ -60,16 +60,21 @@ function AutoMain() {
       maid.sleep(1);
       log('---进入资产页面---', new Date().Format("yyyy-MM-dd HH:mm:ss"));
 
-      // var yj = className("android.widget.Image").text("by").findOne(1000);
-      // if (yj) {yj.click()};
-      // maid.sleep(1);
+      var yj = className("android.widget.Image").text("by").findOne(1000);
+      if (yj) {yj.click()};
+      maid.sleep(1);
       
       if (textStartsWith('$').exists()) {
         var list$ = textStartsWith('$').find().map(t => t.text().slice(1));
         keyongjin = list$.slice(-2)[0];
-        zichan = list$.slice(-3).slice(0,2).reduce((total, next) => {
-          return total + Number(next);
-        }, 0);
+
+        if (list$[0] > 1999) {
+          zichan = list$[0]
+        } else {
+          zichan = list$.slice(-3).slice(0,2).reduce((total, next) => {
+            return total + Number(next);
+          }, 0);
+        }
       }
       maid.sleep(1);
       
@@ -109,7 +114,7 @@ function AutoMain() {
           if (keyongjin/yajin < 1) return;
 
           if (doCount) {
-            device.vibrate(300);
+            device.vibrate(100);
 
             var buy = ~~(doCount / 2);
             var sale = doCount - buy;
